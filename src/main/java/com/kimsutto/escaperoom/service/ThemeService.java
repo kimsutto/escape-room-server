@@ -51,6 +51,7 @@ public class ThemeService {
       themeResult = themeMapper.toResult(themeEntity);
       boolean like = ( themeRepository.findLike(1,themeEntity.getThemeId()) == 0) ? false : true;
       themeResult.setLiked(like);
+      themeResult.setReview(reviews);
       return themeResult;
     }).get();
 

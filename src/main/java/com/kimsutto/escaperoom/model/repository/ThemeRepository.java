@@ -4,6 +4,7 @@ import com.kimsutto.escaperoom.model.entity.CafeEntity;
 import com.kimsutto.escaperoom.model.entity.ThemeEntity;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
@@ -22,6 +23,10 @@ public interface ThemeRepository extends JpaRepository<ThemeEntity, Integer> {
 
   @Query(value = "select EXISTS (select * from theme_like where user_id =?1 AND theme_id=?2 ) as success", nativeQuery = true)
   int findLike(int userId, int themeId);
+
+  @Modifying
+  @Query(value = "update theme SET rating = (rating + ?1) / ((select count(*) from review where theme_id = ?2) +1) where theme_id = ?2", nativeQuery = true)
+  void updateRating(double rating, int themeId);
 
 
 
