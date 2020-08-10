@@ -4,7 +4,6 @@ import com.kimsutto.escaperoom.mapper.CafeMapper;
 import com.kimsutto.escaperoom.mapper.ThemeMapper;
 import com.kimsutto.escaperoom.model.entity.CafeEntity;
 import com.kimsutto.escaperoom.model.entity.ThemeEntity;
-import com.kimsutto.escaperoom.model.param.ThemeParam;
 import com.kimsutto.escaperoom.model.repository.CafeRepository;
 import com.kimsutto.escaperoom.model.repository.ThemeRepository;
 import com.kimsutto.escaperoom.model.result.CafeResult;
