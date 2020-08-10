@@ -25,9 +25,16 @@ public interface ThemeRepository extends JpaRepository<ThemeEntity, Integer> {
   int findLike(int userId, int themeId);
 
   @Modifying
-  @Query(value = "update theme SET rating = (rating + ?1) / ((select count(*) from review where theme_id = ?2) +1) where theme_id = ?2", nativeQuery = true)
+  @Query(value = "update theme SET rating = (rating + ?1) / ((select count(*) from review where theme_id = ?2) +1) where theme_id = ?2;", nativeQuery = true)
   void updateRating(double rating, int themeId);
 
+  @Query(value = "select * from theme where theme_id in (select theme_id from theme_like where user_id = ?1)",nativeQuery = true)
+  List<ThemeEntity> findThemeByUser(int id);
 
+  @Query(value = "select theme_name from theme where theme_id = ?1", nativeQuery = true)
+  String findThemeNameByThemeId(int id);
+
+  @Query(value = "select cafe_name from theme where theme_id = ?1", nativeQuery = true)
+  String findCafeNameByThemeId(int id);
 
 }

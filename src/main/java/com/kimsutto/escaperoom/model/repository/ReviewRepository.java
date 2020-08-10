@@ -15,10 +15,7 @@ public interface ReviewRepository extends JpaRepository<ReviewEntity, Integer> {
   @Query(value = "select * from review where user_id = ?1", nativeQuery = true)
   List<ReviewEntity> findByUser(int id);
 
-  @Query(value = "select count(*) from review where user_id = ?1", nativeQuery = true)
-  int countReviewByUser(int id);
 
-  //탈출 기록
 
 
 
