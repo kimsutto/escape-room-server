@@ -3,6 +3,7 @@ package com.kimsutto.escaperoom.controller;
 import com.kimsutto.escaperoom.model.param.LoginParam;
 import com.kimsutto.escaperoom.service.ThemeService;
 import com.kimsutto.escaperoom.service.UserService;
+import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -32,40 +33,36 @@ public class UserController {
     return ResponseEntity.ok("로그인 성공");
   }
 
-  //사용자 정보 조회 - review_count, like_count
+  @ApiOperation(value = "사용자가 정보 조회")
   @GetMapping(
       value = "api/user/{id}",
-      consumes = MediaType.APPLICATION_JSON_VALUE,
       produces = MediaType.APPLICATION_JSON_VALUE
   )
   public ResponseEntity get(@PathVariable("id") int id ) {
     return ResponseEntity.ok(userService.getUser(id));
   }
 
-  //테마 찜 등록 / 취소
+  @ApiOperation(value = "테마 찜 등록 / 취소 ")
   @GetMapping(
-      value = "api/user/like",
-      consumes = MediaType.APPLICATION_JSON_VALUE
+      value = "api/user/like"
   )
   public ResponseEntity like(@RequestParam(value="theme") int theme, @RequestParam(value="user") int user) {
     userService.like(theme, user);
-    return ResponseEntity.ok("찜");
+    return ResponseEntity.ok("");
   }
 
-  //유저가 작성한 리뷰 조회
+  @ApiOperation(value = "사용자가 작성한 리뷰 조회")
   @GetMapping(
       value = "api/user/{id}/review",
-      consumes = MediaType.APPLICATION_JSON_VALUE,
       produces = MediaType.APPLICATION_JSON_VALUE
   )
   public ResponseEntity getReview(@PathVariable("id") int id){
     return ResponseEntity.ok(userService.getReview(id));
   }
 
-  //유저가 찜한 테마 조회
+  @ApiOperation(value = "사용자가 찜한 테마 조회")
   @GetMapping(
       value = "api/user/{id}/theme",
-      consumes = MediaType.APPLICATION_JSON_VALUE,
       produces = MediaType.APPLICATION_JSON_VALUE
   )
   public ResponseEntity getTheme(@PathVariable("id") int id){

@@ -1,6 +1,7 @@
 package com.kimsutto.escaperoom.controller;
 import com.kimsutto.escaperoom.model.param.ThemeParam;
 import com.kimsutto.escaperoom.service.ThemeService;
+import io.swagger.annotations.ApiOperation;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import org.springframework.http.MediaType;
@@ -24,10 +25,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class ThemeController {
   private ThemeService themeService;
 
-  //테마 전체 조회
+  @ApiOperation(value = "테마 전체 조회")
   @GetMapping(
       value = "",
-      consumes = MediaType.APPLICATION_JSON_VALUE,
       produces = MediaType.APPLICATION_JSON_VALUE
   )
   //페이징
@@ -37,7 +37,7 @@ public class ThemeController {
     return ResponseEntity.ok(themeService.getTheme());
   }
 
-  //테마 필터링 조회
+  @ApiOperation(value = "테마 필터링 조회")
   @PostMapping(
       value = "",
       consumes = MediaType.APPLICATION_JSON_VALUE
@@ -46,10 +46,9 @@ public class ThemeController {
     return ResponseEntity.ok(themeService.getThemeFilter(param));
   }
 
-  //theme 상세 조회(+리뷰)
+  @ApiOperation(value = "테마 상세 정보 (리뷰 포함) ")
   @GetMapping(
       value = "/{id}",
-      consumes = MediaType.APPLICATION_JSON_VALUE,
       produces = MediaType.APPLICATION_JSON_VALUE
   )
   public ResponseEntity get(@PathVariable("id") int id){
@@ -57,10 +56,9 @@ public class ThemeController {
   }
 
 
-  //금주의 테마 조회
+  @ApiOperation(value = "금주의 테마")
   @GetMapping(
       value ="/week",
-      consumes = MediaType.APPLICATION_JSON_VALUE,
       produces = MediaType.APPLICATION_JSON_VALUE
   )
   public ResponseEntity getWeek(){

@@ -3,6 +3,7 @@ package com.kimsutto.escaperoom.controller;
 import com.kimsutto.escaperoom.model.param.ReviewParam;
 import com.kimsutto.escaperoom.model.result.ReviewResult;
 import com.kimsutto.escaperoom.service.ReviewService;
+import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ReviewController {
   private ReviewService reviewService;
 
-  //리뷰 작성
+  @ApiOperation(value = "리뷰 작성")
   @PostMapping(
       value = "/api/review",
       consumes = MediaType.APPLICATION_JSON_VALUE
