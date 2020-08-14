@@ -17,6 +17,12 @@ configurations {
     }
 }
 
+bootJar{
+    archiveBaseName='escaperoom'
+    archiveFileName='-.jar'
+    archiveVersion="1.0.1"
+}
+
 repositories {
     mavenCentral()
 }

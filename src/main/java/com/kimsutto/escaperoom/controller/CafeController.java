@@ -33,13 +33,17 @@ public class CafeController {
     return ResponseEntity.ok(cafeService.getCafe());
   }
 
-  @ApiOperation(value = "카페 이름, 지역 검색")
+  @ApiOperation(value = "카페 이름, 지역 검색", notes="지역만 입력하고 싶을 때 : "
+      + "http://220.149.235.230:8001/api/cafe/search?area=건대&name="
+      + "\n"
+      + "검색어만 입력하고 싶을 때 : "
+      + "http://220.149.235.230:8001/api/cafe/search?name=솔버&area=")
   @GetMapping(
       value = "/search",
       produces = MediaType.APPLICATION_JSON_VALUE
   )
 
-  public ResponseEntity get(@ApiParam(value = "테마 이름", required = false, example = "1호점") @RequestParam(value="name") String name, @ApiParam(value = "지역", required = false, example = "혜화") @RequestParam(value="area") String area){
+  public ResponseEntity get(@ApiParam(value = "카페 이름", required = false, example = "솔버") @RequestParam(value="name") String name, @ApiParam(value = "지역", required = false, example = "건대") @RequestParam(value="area") String area){
 
     return ResponseEntity.ok(cafeService.getCafe(name, area));
   }
