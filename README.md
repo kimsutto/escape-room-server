@@ -7,11 +7,11 @@
 http://localhost:8001/swagger-ui.html
 
 #### 추후 수정 
-- Rest Response
-- Google Login 
-- Session 
+- Rest Response Config
+- Google Login + JWT
 - Paging 
 - Mapper -> direct convert
 - Setter -> Builder
-- @Query -> JPA 
+- @Query -> QueryDsl
 - Modify ThemeFilter
+- Modify API Docs
